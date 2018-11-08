@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     patch '/groups/:id' => 'groups#update'
     delete '/groups/:id' => 'groups#destroy'
     #user_groups
-    get ''
+    
   end
 
 end
