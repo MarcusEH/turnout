@@ -10,6 +10,12 @@ Rails.application.routes.draw do
     delete '/users/:id' => 'users#destroy'
     #groups
     get '/groups' => 'groups#index'
+    post '/groups' => 'groups#create'
+    get '/groups/:id' => 'groups#show'
+    patch '/groups/:id' => 'groups#update'
+    delete '/groups/:id' => 'groups#destroy'
+    #user_groups
+    get ''
   end
 
 end
