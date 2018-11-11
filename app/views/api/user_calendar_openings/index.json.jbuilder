@@ -1,0 +1,1 @@
+json.array! @user_calendar_openings, partial: 'user_calendar_opening', as: :user_calendar_opening

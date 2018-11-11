@@ -1,0 +1,4 @@
+json.id user_calendar_opening.id
+json.user_id user_calendar_opening.user_id
+json.begin_time user_calendar_opening.begin_formatted_time
+json.end_time user_calendar_opening.end_formatted_time

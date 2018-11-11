@@ -1,0 +1,1 @@
+json.partial! 'user_calendar_opening.json.jbuilder', user_calendar_opening: @user_calendar_opening
