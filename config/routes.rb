@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     patch '/groups/:id' => 'groups#update'
     delete '/groups/:id' => 'groups#destroy'
     #user_groups
+    get '/user_groups' => 'user_groups#index'
+    post 'user_groups' => 'user_groups#create'
+    get '/user_groups/:id' => 'user_groups#show'
     #user_calendar_openings
     get '/user_calendar_openings' => 'user_calendar_openings#index'
     post '/user_calendar_openings' => 'user_calendar_openings#create'

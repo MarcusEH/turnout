@@ -1,0 +1,1 @@
+json.array! @user_groups, partial: 'user_group.json.jbuilder', as: :user_group
