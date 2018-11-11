@@ -1,0 +1,2 @@
+class UserCalendarOpening < ApplicationRecord
+end
