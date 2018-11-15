@@ -21,4 +21,16 @@ class Api::UserCalendarOpeningsController < ApplicationController
       render json: {}
     end   
   end
+
+  def update
+    @user_calendar_opening = UserCalendarOpening.find_by(id: params[:id])
+    @user_calendar_opening.user_id = params[:user_id]
+    @user_calendar_opening.begin_time = params[:begin_time]
+    @user_calendar_opening.end_time = params[:end_time]
+    if @user_calendar_opening.save 
+      render 'show.json.jbuilder'
+    else
+      render json: {}
+    end
+  end
 end

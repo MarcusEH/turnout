@@ -1,15 +1,20 @@
-working on user_groups table. 
-just fixed association issue on users table with not finding groups by creating migration to rename column to user_groups_id. 
--create GroupEvent model and api controller
--create association for group_events
+no associations made for user_calendar_openings table short of with user. 
+-make sure associations are working
+-research google api 
+-practice making a basic non-google calendar in a new app
+figure out how you would write your own version of the example (don't want to copy code!)
+-make some additional sample data 
+-create and comment out authentication
 
+
+KEEPER NOTES
 -format for entering datetime is 'YYYY-MM-DDTHH:MM:SS' with the T left in to separate the date and time ex :"2018-11-11T23:23:23"
 
+Asset org - from the rails guide at rubyonrails.org:
+"app/assets is for assets that are owned by the application, such as custom images, JavaScript files or stylesheets.
+
+lib/assets is for your own libraries' code that doesn't really fit into the scope of the application or those libraries which are shared across applications.
+
+vendor/assets is for assets that are owned by outside entities, such as code for JavaScript plugins and CSS frameworks. Keep in mind that third party code with references to other files also processed by the asset Pipeline (images, stylesheets, etc.), will need to be rewritten to use helpers like asset_path."
 
 
-json.id user_calendar_opening.id
-json.user_id user_calendar_opening.user_id
-json.begin_time user_calendar_opening.begin_time
-json.end_time user_calendar_opening.end_time
-
-json.array! @user_calendar_openings, partial: 'user_calendar_opening', as: :user_calendar_opening

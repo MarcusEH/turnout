@@ -12,4 +12,7 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= moment
+//= fullcalendar
 //= require_tree .
+

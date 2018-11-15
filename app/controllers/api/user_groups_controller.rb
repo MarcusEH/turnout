@@ -20,4 +20,21 @@ class Api::UserGroupsController < ApplicationController
       render json: {}
     end
   end
+
+  def update
+    @user_group = UserGroup.find_by(id: params[:id])
+    @user_group.user_id = params[:user_id] || @user_group.user_id
+    @user_group.group_id = params[:group_id] || @user_group.group_id
+    if @user_group.save! 
+      render 'show.json.jbuilder'
+    else
+      render json: {}
+    end
+  end
+
+  def destroy
+    @user_group = UserGroup.find_by(id: params[:id])
+    @user_group.destroy
+    render json: {message: "this user group has been successfully deleted"}    
+  end
 end
