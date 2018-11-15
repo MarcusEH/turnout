@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     post '/user_calendar_openings' => 'user_calendar_openings#create'
     get '/user_calendar_openings/:id' => 'user_calendar_openings#show'
     patch '/user_calendar_openings/:id' => 'user_calendar_openings#update'
+    delete 'user_calendar_openings/:id' => 'user_calendar_openings#destroy'
   end
 
 end

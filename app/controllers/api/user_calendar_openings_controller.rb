@@ -18,7 +18,7 @@ class Api::UserCalendarOpeningsController < ApplicationController
     if @user_calendar_opening.save
       render 'show.json.jbuilder'
     else
-      render json: {}
+      render json: {:errors => @user_calendar_opening.errors.full_messages}
     end   
   end
 
@@ -32,5 +32,12 @@ class Api::UserCalendarOpeningsController < ApplicationController
     else
       render json: {}
     end
+  end
+
+  def destroy
+    @user_calendar_opening = UserCalendarOpening.find_by(id: params[:id])
+    if @user_calendar_opening.destroy
+      render json: {message: "This opening has been removed successfully!"}
+    end     
   end
 end
