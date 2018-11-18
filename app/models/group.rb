@@ -3,15 +3,29 @@ class Group < ApplicationRecord
   has_many :users, through: :user_groups
   has_many :group_events
 
-  # def find_opening
+  def find_opening
   #   time_range = 
-  #   current_opening = "1111-11-11T11:11:11"
-  #   @group.users.each do |user|
-  #     user.user_calendar_openings.each do |user_opening|
-          # if (user1.begin_time < user2.end_time) && (user2.begin_time < user1.end_time) something like this need to find a way to define who is user 1 and 2.. how to loop through grabbing two users at a time.. nested loops? idk.
-  #       time_range = user_opening.begin_time..user_opening.end_time
-  #     end
-  #   end
-  # end
+    @begin_time = "1111-11-11T11:11:11"
+    @end_time = "1111-11-11T11:11:11"
+    self.users.each do |user1|
+      self.users.each do |user2|
+        user1.user_calendar_openings.each do |opening_user1|
+          user2.user_calendar_openings.each do |opening_user2|
+            if (opening_user1.begin_time < opening_user2.end_time) && (opening_user2.begin_time < opening_user1.end_time)
+              @begin_time = opening_user2.begin_time
+              @end_time = opening_user2.end_time
+              p @end_time
+            end
+          end
+        end
+      end
+    end
+    p [@begin_time, @end_time]
+    return [@begin_time, @end_time]
+  end
+
+
+ #only issue is this is not calling calendar_openings... need to also loop through that in each each loop... yeaaa
+
   # https://stackoverflow.com/questions/7325124/how-check-intersection-of-datetime-periods
 end

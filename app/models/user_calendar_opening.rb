@@ -1,4 +1,5 @@
 class UserCalendarOpening < ApplicationRecord
+  belongs_to :user
   # validate :begin_time_is_valid_datetime
   # validate :end_time_is_valid_datetime
   # validate :validate_end_after_begin_time

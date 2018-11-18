@@ -1,0 +1,1 @@
+json.partial! 'group_event.json.jbuilder', group_event: @group_event
