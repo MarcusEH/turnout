@@ -1,14 +1,17 @@
-no associations made for user_calendar_openings table short of with user. 
+make associations for user_calendar_openings table - make association with group to fix loops.
 -make sure associations are working
--research google api 
--practice making a basic non-google calendar in a new app
-figure out how you would write your own version of the example (don't want to copy code!)
--make some additional sample data 
+-research google api (fullCalendar)
+-practice making a basic non-google calendar in a new app (scratch - fullCalendar)
+figure out how you would write your own version of the calendar example (don't want to copy code!)
+-make some additional sample data
+-create more range examples to test logic for time slot in group_events 
 -create and comment out authentication
+-think about how you want to display your data points... are they currently set up properly... range vs specific points...
 
--remove user_groups_id from user table??
 
-**work on group.rb fix the range finding method.
+Outside:
+-look up some styling ...
+
 
 
 KEEPER NOTES
@@ -28,3 +31,11 @@ vendor/assets is for assets that are owned by outside entities, such as code for
     "end_time": "Saturday, 24 Nov 2018 12:00 PM"
 
     **** note created validations with begin_time and end_time if you change the column names change this too for user_calendar_openigns
+
+
+  # https://stackoverflow.com/questions/7325124/how-check-intersection-of-datetime-periods
+
+
+11/21/2018
+-fix the group.rb find_category logic it's still broken in that a last loop. If there are larger numbers that come after it doesn't bother looking them up.
+-change the array to a hash in this file

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_18_200833) do
+ActiveRecord::Schema.define(version: 2018_11_21_235402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2018_11_18_200833) do
 
   create_table "user_groups", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_interests", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "category"
+    t.integer "interest_level"
     t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
