@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     #user_interests
     post '/user_interests' => 'user_interests#create'
     get '/user_interests/:id' => 'user_interests#show'
+    #sessions
+    post '/sessions' => 'sessions#create'
   end
 
 end
