@@ -1,13 +1,14 @@
 class Api::GroupsController < ApplicationController
+  before_action :authenticate_user
   def index
-    @groups = Group.all
+    @groups = User.find(current_user.id).groups
     render 'index.json.jbuilder'
   end
 
-  def show
-    @group = Group.find_by(id: params[:id])
-    render 'show.json.jbuilder'
-  end
+  # def show
+  #   @group = Group.find_by(id: params[:id])
+  #   render 'show.json.jbuilder'
+  # end
 
   def create
     @group = Group.new(

@@ -36,3 +36,5 @@ KEEPER NOTES
 -change the way the range of dates is found to demand it be over 30 mins or can be selected for the event you pick. something like:
  elapsed_minutes = ((end_time - begin_time) * 24 * 60).to_i
  then compare that to 30 mins? if less thant 30 then keep going if not break?
+
+ ****note REMOVE exception for authentication from groups controller for index action only for texting.
