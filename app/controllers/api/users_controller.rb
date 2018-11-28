@@ -1,12 +1,12 @@
 class Api::UsersController < ApplicationController
-  before_action:authenticate_user
+  before_action:authenticate_user, except: [:create]
   def index
     @users = User.all
     render 'index.json.jbuilder'
   end
-
+# remove index action for production not a necessary route.
   def show
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: current_user.id)
     render 'show.json.jbuilder'
   end
 
@@ -22,12 +22,12 @@ class Api::UsersController < ApplicationController
     if @user.save
       render 'show.json.jbuilder'
     else
-      render json: {errors: user.errors.full_messages}, status: :bad_request
+      render json: {errors: @user.errors.full_messages}, status: :bad_request
     end
   end
 
   def update
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: current_user.id)
     @user.first_name = params[:first_name] || @user.first_name
     @user.last_name = params[:last_name] || @user.last_name
     @user.email = params[:email] || @user.email
@@ -43,7 +43,7 @@ class Api::UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: current_user.id)
     @user.destroy
     render json: {message: "this user has been successfully deleted"}
   end

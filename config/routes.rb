@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     post '/group_events' => 'group_events#create'
     get '/group_events/:id' => 'group_events#show'
     #user_interests
+    get '/user_interests' => 'user_interests#index'
     post '/user_interests' => 'user_interests#create'
     get '/user_interests/:id' => 'user_interests#show'
     #sessions

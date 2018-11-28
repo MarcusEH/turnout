@@ -1,4 +1,5 @@
-json.group_id group_event.id
+json.group_event_id group_event.id
+json.group_id group_event.group_id
 json.event_name group_event.event_name
 json.begin_time group_event.begin_time
 json.end_time group_event.end_time

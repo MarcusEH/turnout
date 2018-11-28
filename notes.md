@@ -1,10 +1,7 @@
-make associations for user_calendar_openings table - make association with group to fix loops.
 -make sure associations are working
 -research google api (fullCalendar)
 -make some additional sample data
 -create more range examples to test logic for time slot in group_events 
--create and comment out authentication
--think about how you want to display your data points... are they currently set up properly... range vs specific points...
 
 
 Outside:
@@ -24,11 +21,11 @@ KEEPER NOTES
 
 
 11/21/2018
--fix the group.rb find_category logic it's still broken in that a last loop. If there are larger numbers that come after it doesn't bother looking them up. Done.
--change the array to a hash in this file. Done.
+DONE
 
 11/25/2018 TODO Monday -(pushed to tuesday due to power outage)
--find all places where ids can be replaced with current user method.
+-find all places where ids can be replaced with current user method. (done for: users, user_interests, user_groups, user_calendar_openings, groups)*** GROUP EVENTS NEEDS WORK
+
 -create frontend views for sign up and login 
 -create a way for admin to "invite" users to group. possibly sharing group name or id (id seems like it would cause less issues)? 
   -Have a page for updating user_groups via the user's preference page to add the group associated with each user once they "join" a group. How can I make this authorized only? How can I make this just a tab instead of a whole new page?
@@ -37,4 +34,18 @@ KEEPER NOTES
  elapsed_minutes = ((end_time - begin_time) * 24 * 60).to_i
  then compare that to 30 mins? if less thant 30 then keep going if not break?
 
- ****note REMOVE exception for authentication from groups controller for index action only for texting.
+ 11/28/2018
+ -Remember to remove users index action it is not necessary for the app and not something end users should have access to.
+ -event_type from groups is still blank what do i want here?
+  -should this match the find_category? should just send through json?
+ -group_event_id from groups is still blank what do I want here?
+  -possibly for nice to have of specific events.
+
+  -do i want the user destroy action to actually destroy users? possibly create another column "status" active or inactive for hiding and showing users?
+
+  -for update action for usergroups what do i really want this to do? 
+    -do i want end users to be able to actually move users from one group to another? no. maybe just destroy action to destroy the association of a user between one group.
+
+     
+
+*** creating a group should set the user admin == true... need to actually make this happen

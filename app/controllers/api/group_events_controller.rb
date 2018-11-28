@@ -1,6 +1,9 @@
 class Api::GroupEventsController < ApplicationController
+  before_action :authenticate_user
+  before_action :authenticate_admin, only: [:create]
   def index
-    @group_events = GroupEvent.all
+    @current_user_groups = UserGroup.where(user_id: current_user.id)
+    @group_events = GroupEvent.where(group_id: @current_user_groups)
     render 'index.json.jbuilder'
   end
 
@@ -18,7 +21,6 @@ class Api::GroupEventsController < ApplicationController
       location: params[:location], #possibly make this something that can be selected by the app?
       begin_time: group.find_opening[0],
       end_time: group.find_opening[1],
-      #should this instead be time slot and have find_openg return a range of datetime? ie rollback my migration and recreate time_slot.
       event_name: params[:event_name]
       )
     if @group_event.save 

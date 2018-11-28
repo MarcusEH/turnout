@@ -1,14 +1,10 @@
 class Api::GroupsController < ApplicationController
   before_action :authenticate_user
+  before_action :authenticate_admin, only: [:update, :destroy]
   def index
     @groups = User.find(current_user.id).groups
     render 'index.json.jbuilder'
   end
-
-  # def show
-  #   @group = Group.find_by(id: params[:id])
-  #   render 'show.json.jbuilder'
-  # end
 
   def create
     @group = Group.new(
@@ -24,7 +20,7 @@ class Api::GroupsController < ApplicationController
   end
 
   def update
-    @group = Group.find_by(id: params[:id])
+    @group = Group.find_by(id: params[:id]) #change this to group name? or leave as id..
     @group.title = params[:title] || @group.title
     @group.event_type = params[:event_type] || @group.event_type
     @group.group_event_id = params[:group_event_id] || @group.group_event_id

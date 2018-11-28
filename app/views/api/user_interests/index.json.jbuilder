@@ -1,0 +1,1 @@
+json.array! @user_interests, partial: 'user_interest', as: :user_interest

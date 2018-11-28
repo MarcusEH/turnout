@@ -1,12 +1,22 @@
 class Api::UserInterestsController < ApplicationController
+  before_action :authenticate_user
+  def index
+    @user_interests = UserInterest.where(user_id: current_user.id)
+    render 'index.json.jbuilder'
+  end
+
   def show
     @user_interest = UserInterest.find_by(id: params[:id])
-    render 'show.json.jbuilder'
+    if @user_interest.user_id == current_user.id
+      render 'show.json.jbuilder'
+    else
+      render json: {:errors => @user_interest.errors.full_messages}, Status: :Unauthorized
+    end
   end
 
   def create
     @user_interest = UserInterest.new(
-      user_id: params[:user_id],
+      user_id: current_user.id,
       category: params[:category],
       interest_level: params[:interest_level],
       group_id: params[:group_id]
