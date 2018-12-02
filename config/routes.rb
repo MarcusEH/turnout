@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     #users
     get '/users' => 'users#index'
     post '/users' => 'users#create'
-    get '/users/:id' => 'users#show'
-    patch '/users/:id' => 'users#update'
+    get '/users/show' => 'users#show'
+    patch '/users/edit' => 'users#update'
     delete '/users/:id' => 'users#destroy'
     #groups
     get '/groups' => 'groups#index'

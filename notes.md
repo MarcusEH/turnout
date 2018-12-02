@@ -39,7 +39,7 @@ DONE
  -event_type from groups is still blank what do i want here?
   -should this match the find_category? should just send through json?
  -group_event_id from groups is still blank what do I want here?
-  -possibly for nice to have of specific events.
+  -possibly for "nice to have" of specific events.
 
   -do i want the user destroy action to actually destroy users? possibly create another column "status" active or inactive for hiding and showing users?
 
@@ -49,3 +49,11 @@ DONE
      
 
 *** creating a group should set the user admin == true... need to actually make this happen
+
+
+11/28/2018
+EVENING 
+-Working on front end user profile page
+-trying to create a way for users to update their interests. Need to create logic limiters however. 
+-research casing for vue I am doing it wrong I am sure.
+-
