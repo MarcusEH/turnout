@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     get '/user_interests' => 'user_interests#index'
     post '/user_interests' => 'user_interests#create'
     get '/user_interests/:id' => 'user_interests#show'
+    patch '/user_interests/:id'=>'user_interests#update'
     #sessions
     post '/sessions' => 'sessions#create'
   end
