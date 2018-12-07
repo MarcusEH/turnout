@@ -30,11 +30,12 @@ class Api::UserInterestsController < ApplicationController
 
   def update
     @user_interest = UserInterest.find_by(id: params[:id])
-    @user_interest.update(
-      user_id: current_user.id,
-      category: params[:category],
-      interest_level: params[:interest_level],
-      group_id: params[:group_id]
-    )
+    @user_interest.category = params[:category]
+    @user_interest.interest_level = params[:interest_level]
+    if @user_interest.save!
+      render 'show.json.jbuilder'
+    else
+      render json: {:errors => @user_interest.errors.full_messages}
+    end
   end
 end

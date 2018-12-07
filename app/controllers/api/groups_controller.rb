@@ -6,6 +6,11 @@ class Api::GroupsController < ApplicationController
     render 'index.json.jbuilder'
   end
 
+  def show
+    @group = Group.find_by(id: params[:id])
+    render 'show.json.jbuilder'   
+  end
+
   def create
     @group = Group.new(
       title: params[:title],
