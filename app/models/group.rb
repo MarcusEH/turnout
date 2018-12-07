@@ -5,6 +5,7 @@ class Group < ApplicationRecord
   has_many :user_interests, through: :users
   has_many :user_calendar_openings, through: :users
   has_many :comments
+  has_many :invites
 
   def find_opening
    

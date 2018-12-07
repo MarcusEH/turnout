@@ -41,6 +41,10 @@ Rails.application.routes.draw do
     get '/comments' => 'comments#index'
     post '/comments' => 'comments#create'
     delete '/comments/:id' => 'comments#destroy'
+    #invites
+    get '/invites' => 'invites#index'
+    post '/invites' => 'invites#create'
+    delete '/invites/:id' => 'invites#destroy'
   end
 
 end
