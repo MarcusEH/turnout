@@ -28,19 +28,6 @@ class Group < ApplicationRecord
     sums = {"sports" => 0, "movies" => 0, "music" => 0, "food" => 0, "special" => 0, "custom" => 0}
     self.user_interests.each do |interest|
       sums[interest.category] += interest.interest_level
-      # if interest.category == "sports"
-      #   sums["sports"] += interest.interest_level
-      # elsif interest.category == "movies"
-      #   sums["movies"] += interest.interest_level
-      # elsif interest.category == "music"
-      #   sums["music"] += interest.interest_level
-      # elsif interest.category == "food"
-      #   sums["food"] += interest.interest_level 
-      # elsif interest.category == "special"
-      #   sums["special"] += interest.interest_level
-      # elsif interest.category == "custom"
-      #   sums["custom"] += interest.interest_level
-      # end
     end
     event_type = ""
     final_sum = 0
@@ -52,4 +39,12 @@ class Group < ApplicationRecord
     end
     return event_type
   end 
+  
+  def find_invites_emails
+    emails = []
+    self.invites.each do |invite|
+      emails.push(invite["email"])
+    end
+    return emails
+  end
 end
