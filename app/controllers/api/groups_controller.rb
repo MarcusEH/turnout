@@ -1,6 +1,6 @@
 class Api::GroupsController < ApplicationController
   before_action :authenticate_user
-  before_action :authenticate_admin, only: [:update, :destroy]
+  before_action :authenticate_admin, only: [:destroy]
   def index
     @groups = User.find(current_user.id).groups
     render 'index.json.jbuilder'
@@ -20,12 +20,12 @@ class Api::GroupsController < ApplicationController
     if @group.save
       render 'show.json.jbuilder'
     else
-      render json: {message: "Could not create your group. Please check your information."}
+      render render json: {:errors => @group.errors.full_messages}, Status: :Bad_Request
     end
   end
 
   def update
-    @group = Group.find_by(id: params[:id]) #change this to group name? or leave as id..
+    @group = Group.find_by(id: params[:id]) 
     @group.title = params[:title] || @group.title
     @group.event_type = params[:event_type] || @group.event_type
     @group.group_event_id = params[:group_event_id] || @group.group_event_id

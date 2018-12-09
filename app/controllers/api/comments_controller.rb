@@ -7,7 +7,7 @@ class Api::CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(
-      comment_text: params[:comment],
+      comment_text: params[:comment_text],
       user_id: current_user.id,
       group_id: params[:group_id]
     )

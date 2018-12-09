@@ -18,8 +18,7 @@ class Api::UserInterestsController < ApplicationController
     @user_interest = UserInterest.new(
       user_id: current_user.id,
       category: params[:category],
-      interest_level: params[:interest_level],
-      group_id: params[:group_id]
+      interest_level: params[:interest_level]
     )
     if @user_interest.save
       render 'show.json.jbuilder'

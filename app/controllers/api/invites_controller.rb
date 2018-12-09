@@ -1,8 +1,16 @@
 class Api::InvitesController < ApplicationController
-  before_action :authenticate_user, :authenticate_admin
+  # before_action :authenticate_user, except: [:index, :show]
   def index
-    @invites = Invite.where(group_id: params[:group_id])
-    render json: @invites
+    if current_user
+      user_email = current_user.email
+      @invites = Invite.where(email: user_email)
+      render 'index.json.jbuilder'
+    end
+  end
+
+  def show
+    @invite = Invite.find_by(id: params[:id])
+    render 'show.json.jbuilder'
   end
 
   def create

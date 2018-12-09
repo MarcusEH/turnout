@@ -2,7 +2,7 @@ class Group < ApplicationRecord
   has_many :user_groups
   has_many :users, through: :user_groups
   has_many :group_events
-  has_many :user_interests, through: :users
+  # has_many :user_interests, through: :users
   has_many :user_calendar_openings, through: :users
   has_many :comments
   has_many :invites
@@ -26,8 +26,10 @@ class Group < ApplicationRecord
 
   def find_category
     sums = {"sports" => 0, "movies" => 0, "music" => 0, "food" => 0, "special" => 0, "custom" => 0}
-    self.user_interests.each do |interest|
-      sums[interest.category] += interest.interest_level
+    self.users.each do |user|
+      user.user_interests.each do |interest|
+        sums[interest.category] += interest.interest_level
+      end
     end
     event_type = ""
     final_sum = 0
@@ -39,7 +41,7 @@ class Group < ApplicationRecord
     end
     return event_type
   end 
-  
+
   def find_invites_emails
     emails = []
     self.invites.each do |invite|

@@ -16,7 +16,7 @@ class Api::UserGroupsController < ApplicationController
 
   def create
     @user_group = UserGroup.new(
-      user_id: params[:user_id],
+      user_id: current_user.id,
       group_id: params[:group_id]
     )
     if @user_group.save
