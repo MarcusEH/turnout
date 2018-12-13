@@ -41,4 +41,15 @@ class Api::GroupsController < ApplicationController
     @group.destroy
     render json: {message: "your group has been deleted successfully"}
   end
+
+  def event_info
+    @groups = User.find(current_user.id).groups
+    @groups_events = []
+    @groups.each do |group|
+      group.group_events.each do |event|
+        @groups_events.push(event)
+      end 
+    end
+    render 'event_info.json.jbuilder'
+  end
 end

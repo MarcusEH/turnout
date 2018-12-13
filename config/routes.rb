@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     get '/users/show' => 'users#show'
     patch '/users/edit' => 'users#update'
     delete '/users/:id' => 'users#destroy'
+    #calendar route
+    get '/groups/event_info' => 'groups#event_info'
     #groups
     get '/groups' => 'groups#index'
     post '/groups' => 'groups#create'
@@ -46,6 +48,7 @@ Rails.application.routes.draw do
     post '/invites' => 'invites#create'
     get '/invites/:id' => 'invites#show'
     delete '/invites/:id' => 'invites#destroy'
+
   end
 
 end

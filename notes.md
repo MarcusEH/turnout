@@ -102,3 +102,10 @@ only available to the group creator? hmm. yes, let's keep it simple.
   -fandango api or imdb
 12/09/2018
 -installing theme. working on nav bar on index page.
+
+12/11/2018
+-theme mostly installed issues with group show page. Members are popping out of the box. Maybe just remove the box? Don't waste time on this. If it's not working move on.
+-Need to look for the fandango api.
+-add the images tables for users and group
+  -currently the registration page and edit page for user is      uploading a file not adding an image url.
+-finish installing the theme: go faster.
