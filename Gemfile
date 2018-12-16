@@ -26,10 +26,12 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
+gem 'actionmailer', '~> 5.2.2'
+gem 'actionpack', '~> 5.2.2'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'turbolinks', '~> 5.2.0'
+gem "figaro"
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem "awesome_print", require:"ap"

@@ -121,3 +121,4 @@ only available to the group creator? hmm. yes, let's keep it simple.
 
 -issue with group edit page errors for group info? 
 working on fixing group images. not linked between group image table and group table.
+  -add to group table -group_image_id and then add the post request if group_image doesn't exist to the group edit page.

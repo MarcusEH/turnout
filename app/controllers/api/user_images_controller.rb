@@ -13,8 +13,7 @@ class Api::UserImagesController < ApplicationController
   def create
     @user_image = UserImage.new(
       user_id: current_user.id,
-      url: params[:url],
-      image_file: params[:image_file]
+      url: params[:url]
     )
     if @user_image.save
       render json: @user_image

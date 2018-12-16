@@ -28,6 +28,7 @@ class Api::GroupsController < ApplicationController
     @group.title = params[:title] || @group.title
     @group.event_type = params[:event_type] || @group.event_type
     @group.group_event_id = params[:group_event_id] || @group.group_event_id
+    @group.group_image_id = params[:group_image_id] || @group.group_image_id
     if @group.save
       render 'show.json.jbuilder'
     else

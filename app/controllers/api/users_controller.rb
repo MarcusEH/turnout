@@ -20,6 +20,9 @@ class Api::UsersController < ApplicationController
       admin: params[:admin]
     )
     if @user.save
+      UserMailer.with(
+        user: @user
+      ).welcome_email.deliver_now
       render 'show.json.jbuilder'
     else
       render json: {errors: @user.errors.full_messages}, status: :bad_request
@@ -31,6 +34,7 @@ class Api::UsersController < ApplicationController
     @user.first_name = params[:first_name] || @user.first_name
     @user.last_name = params[:last_name] || @user.last_name
     @user.email = params[:email] || @user.email
+    @user.user_image_id = params[:user_image_id] || @user.user_image_id
     if params[:password]
       @user.password = params[:password]
       @user.password_confirmation = params[:password_confirmation] 
@@ -47,5 +51,12 @@ class Api::UsersController < ApplicationController
     @user = User.find_by(id: current_user.id)
     @user.destroy
     render json: {message: "this user has been successfully deleted"}
+  end
+
+  def send_email
+    @user = User.find_by(id: current_user.id)
+    UserMailer.with(user:
+      @user).welcome_email.deliver_later
+    
   end
 end
