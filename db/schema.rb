@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_09_202105) do
+ActiveRecord::Schema.define(version: 2018_12_16_033917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 2018_12_09_202105) do
     t.datetime "begin_time"
     t.datetime "end_time"
     t.string "event_name"
+  end
+
+  create_table "group_images", force: :cascade do |t|
+    t.integer "group_id"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "groups", force: :cascade do |t|
@@ -63,6 +70,14 @@ ActiveRecord::Schema.define(version: 2018_12_09_202105) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_images", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "image_file"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_interests", force: :cascade do |t|
     t.integer "user_id"
     t.string "category"
@@ -79,6 +94,7 @@ ActiveRecord::Schema.define(version: 2018_12_09_202105) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.integer "user_image_id"
   end
 
 end

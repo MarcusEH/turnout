@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get '/groups' => 'groups#index'
     post '/groups' => 'groups#create'
     get '/groups/:id' => 'groups#show'
-    patch '/groups/:id' => 'groups#update'
+    patch '/groups/edit' => 'groups#update'
     delete '/groups/:id' => 'groups#destroy'
     #user_groups
     get '/user_groups' => 'user_groups#index'
@@ -48,6 +48,16 @@ Rails.application.routes.draw do
     post '/invites' => 'invites#create'
     get '/invites/:id' => 'invites#show'
     delete '/invites/:id' => 'invites#destroy'
+    #userimages
+    get '/user_images' => 'user_images#index'
+    post '/user_images' => 'user_images#create'
+    get '/user_images/:id' => 'user_images#show'
+    patch '/user_images/edit' => 'user_images#update'
+    #group images
+    get '/group_images' => 'group_images#index'
+    post '/group_images' => 'group_images#create'
+    get '/group_images/:id' => 'group_images#show'
+    patch '/group_images/edit' => 'group_images#update'
 
   end
 

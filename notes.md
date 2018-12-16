@@ -109,3 +109,15 @@ only available to the group creator? hmm. yes, let's keep it simple.
 -add the images tables for users and group
   -currently the registration page and edit page for user is      uploading a file not adding an image url.
 -finish installing the theme: go faster.
+
+12/14/2018
+-need to create an automatic way ignore past dates.
+
+-join a group, create a group need theme work
+-remove your events this is basically the calendar? 
+  -add more details to the calendar
+-make seeds faker data for movies, etc.. can't find an api. all cost money or don't have what I need unfortunately. 
+
+
+-issue with group edit page errors for group info? 
+working on fixing group images. not linked between group image table and group table.

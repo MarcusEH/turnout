@@ -6,3 +6,4 @@ json.groups user.groups
 json.admin user.admin
 json.openings user.user_calendar_openings
 json.interests user.user_interests
+json.user_image user.user_image

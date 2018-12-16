@@ -14,13 +14,12 @@ class Api::GroupsController < ApplicationController
   def create
     @group = Group.new(
       title: params[:title],
-      event_type: params[:event_type],
-      group_event_id: params[:group_event_id],
+      event_type: params[:event_type]
     )
     if @group.save
       render 'show.json.jbuilder'
     else
-      render render json: {:errors => @group.errors.full_messages}, Status: :Bad_Request
+      render json: {:errors => @group.errors.full_messages}, Status: :Bad_Request
     end
   end
 
@@ -32,7 +31,7 @@ class Api::GroupsController < ApplicationController
     if @group.save
       render 'show.json.jbuilder'
     else
-      render json: {message: "Could not update your group. Please check your information."}
+      render json: {:errors => @group.errors.full_messages}
     end
   end
 
