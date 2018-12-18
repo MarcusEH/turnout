@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '/users/show' => 'users#show'
     patch '/users/edit' => 'users#update'
     delete '/users/:id' => 'users#destroy'
+
     #calendar route
     get '/groups/event_info' => 'groups#event_info'
     #groups
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
     get '/groups/:id' => 'groups#show'
     patch '/groups/edit' => 'groups#update'
     delete '/groups/:id' => 'groups#destroy'
+    post 'groups/email' => 'groups#send_email'
     #user_groups
     get '/user_groups' => 'user_groups#index'
     post 'user_groups' => 'user_groups#create'

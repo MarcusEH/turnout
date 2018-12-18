@@ -6,7 +6,7 @@ class Group < ApplicationRecord
   has_many :user_calendar_openings, through: :users
   has_many :comments
   has_many :invites
-  belongs_to :group_image
+  belongs_to :group_image, optional: true
   has_many :user_images, through: :users
 
   def find_opening

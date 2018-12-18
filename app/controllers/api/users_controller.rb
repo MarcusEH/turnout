@@ -52,11 +52,4 @@ class Api::UsersController < ApplicationController
     @user.destroy
     render json: {message: "this user has been successfully deleted"}
   end
-
-  def send_email
-    @user = User.find_by(id: current_user.id)
-    UserMailer.with(user:
-      @user).welcome_email.deliver_later
-    
-  end
 end

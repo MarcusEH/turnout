@@ -1,5 +1,5 @@
 class Api::GroupsController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user, only: [:create, :update]
   before_action :authenticate_admin, only: [:destroy]
   def index
     @groups = User.find(current_user.id).groups
@@ -51,5 +51,27 @@ class Api::GroupsController < ApplicationController
       end 
     end
     render 'event_info.json.jbuilder'
+  end
+
+  def send_email
+    @usergroups = UserGroup.where(group_id: params[:id])
+    
+    @users = []
+    @usergroups.each do |usergroup|
+      p @usergroup
+      user = User.find_by(id: usergroup.user_id)
+      @users.push(user)
+      p @users
+    end 
+    p params[:email_body]
+    @body = params[:email_body]
+
+    @users.each do |user|
+      UserMailer.with(
+      user: user,
+      body: @body
+      ).group_email.deliver_later
+    end
+    render json: {message: "your email has been sent"}
   end
 end
