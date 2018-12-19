@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
     @users = User.all
     render 'index.json.jbuilder'
   end
-# remove index action for production not a necessary route.
+
   def show
     @user = User.find_by(id: current_user.id)
     render 'show.json.jbuilder'

@@ -14,12 +14,10 @@ class Api::GroupEventsController < ApplicationController
 
   def create
     group = Group.find_by(id: params[:group_id])
-    # group = Group.find_by(title: params[:title])
 
     @group_event = GroupEvent.new(
-      # group_id: current_user.group_id
       group_id: group.id,
-      location: params[:location], #possibly make this something that can be selected by the app?
+      location: params[:location], 
       begin_time: group.find_opening[0],
       end_time: group.find_opening[1],
       event_name: params[:event_name]

@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :group_events, through: :groups
   has_many :comments
   has_secure_password
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :first_name, :last_name, presence: true
   belongs_to :user_image, optional: true
 end

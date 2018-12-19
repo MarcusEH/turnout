@@ -5,23 +5,22 @@ Rails.application.routes.draw do
     #users
     get '/users' => 'users#index'
     post '/users' => 'users#create'
-    get '/users/show' => 'users#show'
-    patch '/users/edit' => 'users#update'
-    delete '/users/:id' => 'users#destroy'
     get '/users/keys' => 'users#get_keys'
-
+    get '/users/:id' => 'users#show'
+    patch '/users/:id' => 'users#update'
+    delete '/users/:id' => 'users#destroy'
     #calendar route
     get '/groups/event_info' => 'groups#event_info'
     #groups
     get '/groups' => 'groups#index'
     post '/groups' => 'groups#create'
     get '/groups/:id' => 'groups#show'
-    patch '/groups/edit' => 'groups#update'
+    patch '/groups/:id' => 'groups#update'
     delete '/groups/:id' => 'groups#destroy'
     post 'groups/email' => 'groups#send_email'
     #user_groups
     get '/user_groups' => 'user_groups#index'
-    post 'user_groups' => 'user_groups#create'
+    post '/user_groups' => 'user_groups#create'
     get '/user_groups/:id' => 'user_groups#show'
     patch '/user_groups/:id' => 'user_groups#update'
     delete '/user_groups/:id' => 'user_groups#destroy'
@@ -39,7 +38,7 @@ Rails.application.routes.draw do
     get '/user_interests' => 'user_interests#index'
     post '/user_interests' => 'user_interests#create'
     get '/user_interests/:id' => 'user_interests#show'
-    patch '/user_interests/:id/edit'=>'user_interests#update'
+    patch '/user_interests/:id'=>'user_interests#update'
     #sessions
     post '/sessions' => 'sessions#create'
     #comments
@@ -55,7 +54,7 @@ Rails.application.routes.draw do
     get '/user_images' => 'user_images#index'
     post '/user_images' => 'user_images#create'
     get '/user_images/:id' => 'user_images#show'
-    patch '/user_images/edit' => 'user_images#update'
+    patch '/user_images/:id' => 'user_images#update'
     #group images
     get '/group_images' => 'group_images#index'
     post '/group_images' => 'group_images#create'
