@@ -32,7 +32,7 @@ class Api::GroupsController < ApplicationController
     if @group.save
       render 'show.json.jbuilder'
     else
-      render json: {:errors => @group.errors.full_messages}
+      render json: {:errors => @group.errors.full_messages}, Status: :Bad_Request
     end
   end
 

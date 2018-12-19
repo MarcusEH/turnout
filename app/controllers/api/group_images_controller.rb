@@ -18,7 +18,7 @@ class Api::GroupImagesController < ApplicationController
     if @group_image.save
       render json: @group_image
     else
-      render json: {:errors => @group_image.errors.full_messages}
+      render json: {:errors => @group_image.errors.full_messages},Status: :Bad_Request
     end
   end
 
@@ -30,7 +30,6 @@ class Api::GroupImagesController < ApplicationController
       p 'the image saved'
       render json: @group_image
     else
-      p 'the image did not save'
       render json: {:errors => @group_image.errors.full_messages}
     end
   end

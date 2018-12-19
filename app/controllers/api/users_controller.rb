@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_action:authenticate_user, except: [:create]
+  before_action:authenticate_user, except: [:create, :get_keys]
   def index
     @users = User.all
     render 'index.json.jbuilder'
@@ -51,5 +51,13 @@ class Api::UsersController < ApplicationController
     @user = User.find_by(id: current_user.id)
     @user.destroy
     render json: {message: "this user has been successfully deleted"}
+  end
+
+  def get_keys
+    @keys = []
+    @api_key = ENV["API_KEY"]
+    @client_key = ENV["CLIENT_ID"]
+    @keys.push(@api_key, @client_key)
+    render json: @keys
   end
 end

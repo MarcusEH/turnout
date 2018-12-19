@@ -13,15 +13,29 @@ class Group < ApplicationRecord
    
     @begin_time = "1111-11-11T11:11:11"
     @end_time = "1111-11-11T11:11:11"
-    self.user_calendar_openings.each do |opening_user1|
-      self.user_calendar_openings.each do |opening_user2|
-        if (opening_user1.begin_time < opening_user2.end_time) && (opening_user2.begin_time < opening_user1.end_time)
-          @begin_time = opening_user2.begin_time
-          @end_time = opening_user2.end_time
-          p @end_time
-        end
-      end
-    end
+    # self.user_calendar_openings.each do |opening_user1|
+    #   self.user_calendar_openings.each do |opening_user2|
+    #     if (opening_user1.begin_time < opening_user2.end_time) && (opening_user2.begin_time < opening_user1.end_time)
+    #       @begin_time = opening_user2.begin_time
+    #       @end_time = opening_user2.end_time
+    #       p @end_time
+    #     end
+    #   end
+    # end
+    all_begin_times = []
+    all_begin_times = self.user_calendar_openings.map{ |x| x["begin_time"] }.flatten
+    p "the begin times"
+    p all_begin_times
+    p "*" * 50
+    @begin_time = all_begin_times.max_by { |i| all_begin_times.count(i) }
+
+    all_end_times = []
+    all_end_times = self.user_calendar_openings.map{ |x| x["end_time"] }.flatten
+    p "the end times"
+    p all_end_times
+     p "*" * 50
+    @end_time = all_end_times.max_by { |i| all_end_times.count(i) }
+
     p [@begin_time, @end_time]
     return [@begin_time, @end_time]
   end

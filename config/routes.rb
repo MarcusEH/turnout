@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '/users/show' => 'users#show'
     patch '/users/edit' => 'users#update'
     delete '/users/:id' => 'users#destroy'
+    get '/users/keys' => 'users#get_keys'
 
     #calendar route
     get '/groups/event_info' => 'groups#event_info'
@@ -59,7 +60,7 @@ Rails.application.routes.draw do
     get '/group_images' => 'group_images#index'
     post '/group_images' => 'group_images#create'
     get '/group_images/:id' => 'group_images#show'
-    patch '/group_images/edit' => 'group_images#update'
+    patch '/group_images/:id' => 'group_images#update'
 
   end
 
