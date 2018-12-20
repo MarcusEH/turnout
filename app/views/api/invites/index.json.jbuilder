@@ -1,3 +1,1 @@
-json.array! @invites do |invite|
-  json.partial! "invite.json.jbuilder", invite: invite
-end
+json.array! @invites, partial: 'invite', as: :invite

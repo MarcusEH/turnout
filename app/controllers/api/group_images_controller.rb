@@ -18,7 +18,7 @@ class Api::GroupImagesController < ApplicationController
     if @group_image.save
       render json: @group_image
     else
-      render json: {:errors => @group_image.errors.full_messages},Status: :Bad_Request
+      render json: {:errors => @group_image.errors.full_messages}, Status: :Bad_Request
     end
   end
 

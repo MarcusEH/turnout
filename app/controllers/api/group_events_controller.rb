@@ -1,6 +1,6 @@
 class Api::GroupEventsController < ApplicationController
   before_action :authenticate_user
-  before_action :authenticate_admin, only: [:create]
+  # before_action :authenticate_admin, only: [:create]
   def index
     @current_user_groups = UserGroup.where(user_id: current_user.id)
     @group_events = GroupEvent.where(group_id: @current_user_groups)

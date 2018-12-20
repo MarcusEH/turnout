@@ -1,5 +1,5 @@
 class Api::InvitesController < ApplicationController
-  # before_action :authenticate_user, except: [:index, :show]
+  before_action :authenticate_user, except: [:index, :show]
   def index
     if current_user
       user_email = current_user.email
