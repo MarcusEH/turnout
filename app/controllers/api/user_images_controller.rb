@@ -26,7 +26,6 @@ class Api::UserImagesController < ApplicationController
     p 'started the update'
     @user_image = UserImage.find_by(user_id: current_user.id)
     @user_image.url = params[:url] || @user_image.url
-    # @user_image.image_file = params[:image_file] || @user_image.image_file
     if @user_image.save
       p 'the image saved'
       render json: @user_image
